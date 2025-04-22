@@ -1,0 +1,233 @@
+/* Estilos Gerais (body, h1) - Mantenha ou ajuste */
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column; /* Organiza h1 acima do container */
+    align-items: center;    /* Centraliza h1 e o container */
+    min-height: 95vh;
+    background-color: #f4f4f4;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* --- Layout Principal com CSS Grid --- */
+#game-layout-container {
+    display: grid;
+    /* Define 3 colunas: auto para painéis laterais, min-content para o tabuleiro não esticar demais */
+    grid-template-columns: auto min-content auto;
+    gap: 25px; /* Espaçamento entre as colunas */
+    align-items: start; /* Alinha os itens no topo de suas áreas */
+    justify-content: center; /* Tenta centralizar o grid se a tela for larga */
+    width: fit-content; /* Faz o container ter a largura do conteúdo */
+    max-width: 100%;   /* Garante que não ultrapasse a tela */
+    margin: 0 auto;     /* Centraliza o container na página */
+}
+
+/* --- Coluna Esquerda: Contador de Capturas --- */
+#capture-counter-area {
+    grid-column: 1 / 2; /* Posiciona na primeira coluna */
+    border: 1px solid #ccc;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    min-width: 180px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#capture-counter-area h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.capture-info {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.capture-label {
+    font-size: 0.9em;
+    color: #333;
+    margin-right: 10px;
+}
+
+.capture-count {
+    font-weight: bold;
+    font-size: 1.1em;
+    background-color: #e9ecef;
+    padding: 3px 8px;
+    border-radius: 4px;
+    min-width: 25px;
+    text-align: center;
+}
+
+/* --- Coluna Central: Jogo Principal --- */
+#main-game-area {
+    grid-column: 2 / 3; /* Posiciona na segunda coluna */
+    display: flex;
+    flex-direction: column; /* Organiza status, board, controls verticalmente */
+    align-items: center; /* Centraliza os itens dentro desta coluna */
+}
+
+#status-area {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #555;
+    min-height: 1.5em;
+    text-align: center; /* Centraliza o texto do status */
+}
+
+#board {
+    /* Mantém os estilos do tabuleiro (width, height, grid, border) */
+    width: 400px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(8, 50px);
+    border: 5px solid #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px; /* Espaço antes dos controles */
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center; /* Centraliza o(s) botão(ões) */
+}
+
+/* Estilos dos botões (reset, pass-turn se existir) - Mantenha ou ajuste */
+#reset-button /*, #pass-turn-button */ {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    transition: background-color 0.2s ease;
+    background-color: #28a745; /* Reset */
+}
+#reset-button:hover {
+    background-color: #218838;
+}
+/* Estilos específicos para pass-turn-button se ele existir... */
+
+
+/* --- Coluna Direita: Painel do Placar --- */
+#score-panel {
+    grid-column: 3 / 4; /* Posiciona na terceira coluna */
+    border: 1px solid #ccc;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    min-width: 180px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#score-panel h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+    font-size: 1.1em;
+}
+
+#score-table {
+    width: 100%;
+    border-collapse: collapse; /* Remove espaços entre bordas */
+}
+
+#score-table th,
+#score-table td {
+    border: 1px solid #ddd; /* Adiciona bordas finas */
+    padding: 8px 5px; /* Espaçamento interno */
+    text-align: center;
+    vertical-align: middle; /* Alinha verticalmente no centro */
+}
+
+#score-table th {
+    background-color: #e9ecef; /* Fundo leve para cabeçalho */
+    font-size: 0.9em;
+    color: #444;
+}
+
+/* Estilos para o ícone do jogador dentro da tabela */
+.player-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.small-square { /* Quadrado menor para o ícone */
+    width: 30px;
+    height: 30px;
+    display: flex; /* Necessário para centralizar a peça dentro */
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Para a peça pequena */
+}
+.small-piece { /* Peça menor para o ícone */
+    width: 80%;
+    height: 80%;
+    position: absolute; /* Permite centralização */
+    /* Remove cursor pointer das peças do placar */
+    cursor: default;
+    /* Adiciona a cor da peça - reutiliza classes .player1/.player2 */
+    border-radius: 50%; /* Garante que seja redonda */
+    box-sizing: border-box;
+}
+
+.score-value {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+
+/* --- Estilos do Tabuleiro e Peças (Revisão para contexto do grid) --- */
+.square {
+    width: 50px; /* Largura do quadrado no tabuleiro principal */
+    height: 50px;/* Altura do quadrado no tabuleiro principal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Necessário para peças com position: absolute */
+}
+
+.light { background-color: #f0d9b5; }
+.dark { background-color: #b58863; }
+
+.piece {
+    /* Mantém os estilos da peça principal */
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    cursor: pointer;
+    position: absolute; /* Para animação e posicionamento */
+    z-index: 1;
+    transition: transform 0.3s ease-in-out; /* Transição para animação */
+    /* Cores das peças */
+}
+.player1 { background-color: #ff4136; box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4); }
+.player2 { background-color: #333; box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.4); }
+
+/* Estilos de seleção, movimento, dama, etc. (Mantenha como estavam) */
+.selected { border: 3px solid #007bff; box-shadow: 0 0 10px #007bff; z-index: 2; }
+.moving { z-index: 10; }
+.valid-move-indicator { /* ... */ }
+.piece.king { /* ... */ }
+.piece.king::after { /* ... */ }
+.piece.player2.king::after { /* ... */ }

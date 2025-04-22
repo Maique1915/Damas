@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Damas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Jogo de Damas</h1>
+
+    <!-- Container Principal para o Layout de 3 Colunas -->
+    <div id="game-layout-container">
+
+        <!-- Coluna Esquerda: Contador de Capturas -->
+        <div id="capture-counter-area">
+            <h4>Peças Capturadas</h4>
+            <div class="capture-info">
+                <div class="square dark small-square"><div class="piece player1 small-piece"></div></div>
+                <span class="capture-count" id="player1-captured-count">0</span>
+            </div>
+            <div class="capture-info">
+                <div class="square dark small-square"><div class="piece player2 small-piece"></div></div>
+                <span class="capture-count" id="player2-captured-count">0</span>
+            </div>
+        </div>
+
+        <!-- Coluna Central: Jogo Principal -->
+        <div id="main-game-area">
+            <div id="status-area">
+                <p id="status">Vez do Jogador 1 (Vermelhas)</p>
+            </div>
+            <div id="board">
+                <!-- Quadrados do tabuleiro serão gerados pelo JavaScript -->
+            </div>
+            <div class="controls">
+                <button id="reset-button">Reiniciar Jogo</button>
+            </div>
+        </div>
+
+        <!-- Coluna Direita: Painel do Placar -->
+        <div id="score-panel">
+            <h3>Vitórias</h3>
+            <div class="capture-info">
+                <div class="square dark small-square"><div class="piece player1 small-piece"></div></div>
+                <span class="score-value" id="player1-score">0</span>
+            </div>
+            <div class="capture-info">
+                <div class="square dark small-square"><div class="piece player2 small-piece"></div></div>
+                <span class="score-value" id="player2-score">0</span>
+            </div>
+        </div>
+
+    </div> <!-- Fim do #game-layout-container -->
+
+    <script src="script.js"></script>
+</body>
+</html>
